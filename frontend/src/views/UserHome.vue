@@ -3,12 +3,22 @@
     <header class="toolbar">
       <h1>User</h1>
       <div class="search">
-        <input v-model.trim="qName" @keyup.enter="searchName" placeholder="Search name…" />
-        <button @click="searchName" :disabled="busy.products">By name</button>
-        <input v-model.trim="qDesc" @keyup.enter="searchDesc" placeholder="Search description…" />
-        <button @click="searchDesc" :disabled="busy.products">By description</button>
-        <button class="ghost" @click="resetAndLoad" :disabled="busy.products">Reset</button>
-      </div>
+          <input
+            v-model.trim="qName"
+            @keyup.enter="searchName"
+            placeholder="Search name…"
+          />
+          <button @click="searchName" :disabled="busy.products">By name</button>
+
+          <input
+            v-model.trim="qDesc"
+            @keyup.enter="searchDesc"
+            placeholder="Search description…"
+          />
+          <button @click="searchDesc" :disabled="busy.products">By description</button>
+
+          <button class="ghost" @click="resetAndLoad" :disabled="busy.products">Reset</button>
+        </div>
 
       <button class="logout" @click="doLogout" :disabled="busy.logout">Logout</button>
       <button
@@ -55,8 +65,8 @@ import ProductTable from '../components/ProductTable.vue';
 import CartPanel from '../components/CartPanel.vue';
 import {
   listProducts,
-  searchByName,
-  searchByDescription,
+  searchByName as apiSearchByName,
+  searchByDescription as apiSearchByDescription,
   getCart,
   addToCart,
   removeFromCart,
@@ -109,21 +119,23 @@ async function loadAll() {
   }
 }
 
-async function searchProductsByName() {
-  if (!qName.value.trim()) return loadAll();
+async function searchName() {
+  const q = qName.value.trim();
+  if (!q) return resetAndLoad();
   busy.products = true;
   try {
-    products.value = await searchByName(qName.value.trim());
+    products.value = await apiSearchByName(q);
   } finally {
     busy.products = false;
   }
 }
 
-async function searchProductsByDesc() {
-  if (!qDesc.value.trim()) return loadAll();
+async function searchDesc() {
+  const q = qDesc.value.trim();
+  if (!q) return resetAndLoad();
   busy.products = true;
   try {
-    products.value = await searchByDescription(qDesc.value.trim());
+    products.value = await apiSearchByDescription(q);
   } finally {
     busy.products = false;
   }
