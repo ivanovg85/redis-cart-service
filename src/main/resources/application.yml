@@ -1,0 +1,8 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+cart:
+  idle-ttl: 5m   # idle timeout for session carts

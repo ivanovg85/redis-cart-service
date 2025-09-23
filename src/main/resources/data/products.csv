@@ -1,0 +1,51 @@
+id,sku,name,description,price
+6e3b49c5-1968-4e42-a775-f41e1e6cce29,SKU-0001,Gray Poster,Gray Poster with Recycled Paper finish,118.91
+55a85ff6-c5d9-4783-a7f7-452d7722bc04,SKU-0002,Gray Hoodie,Gray Hoodie with Recycled Paper finish,29.24
+9930e51e-c58e-4a4d-93a4-7a7f0dbcc0b2,SKU-0003,Purple Poster,Purple Poster with Recycled Paper finish,39.48
+f2d7f7a3-2996-487a-9b0e-889ca6c1ab2f,SKU-0004,Red Hoodie,Red Hoodie with Aluminum finish,46.46
+e2d1fc43-0c32-448e-918d-66e50c8514cb,SKU-0005,Blue Bottle,Blue Bottle with Canvas finish,83.09
+1c0a62cf-1c61-44c9-8f88-dc8c20f38a49,SKU-0006,Orange Keychain,Orange Keychain with Porcelain finish,132.26
+3d63d0b2-9aa6-4d84-a85c-59a742d2ab43,SKU-0007,White Hoodie,White Hoodie with Vinyl finish,76.18
+1a35f7bb-94e0-47a2-b083-0fbd093f053a,SKU-0008,Red Sticker,Red Sticker with Canvas finish,41.74
+6e3c7568-2da6-44cf-b071-f72b405bd048,SKU-0009,Blue Cap,Blue Cap with Cotton finish,20.62
+45af84c3-4527-44b5-8b7a-779eebf2bc42,SKU-0010,Yellow Hoodie,Yellow Hoodie with Recycled Paper finish,102.48
+8b8f4367-344f-4d52-9c1f-32d0af5d5298,SKU-0011,Black Sticker,Black Sticker with Aluminum finish,48.70
+afee32ac-7ae7-4e02-9c6f-4e5a5a9f9911,SKU-0012,Red T-Shirt,Red T-Shirt with Cotton finish,12.93
+a4c9639b-c8f7-43f3-8f62-4ef07a4c1a38,SKU-0013,Orange Cap,Orange Cap with Porcelain finish,28.44
+1994e5f2-35f3-4f5c-9a93-0a51f7f9a40e,SKU-0014,Teal Mug,Teal Mug with Stoneware finish,73.40
+ae36e548-f1c8-405c-851d-469c11f6e5a4,SKU-0015,Black Poster,Black Poster with Vinyl finish,86.35
+8d12f11a-17a2-4b4b-b437-faa33c51f6c9,SKU-0016,Gray Hoodie,Gray Hoodie with Cotton finish,41.67
+59794356-2c4e-4706-b84b-2b9a0f4a25f5,SKU-0017,White Hoodie,White Hoodie with Stainless Steel finish,121.55
+3c86f6a3-7db2-4c3e-ae5f-2a62dbf8fbc0,SKU-0018,Red Hoodie,Red Hoodie with Porcelain finish,88.94
+3e5d1fa7-c1b3-48ad-8d6d-f02765f5a23c,SKU-0019,Blue Notebook,Blue Notebook with Recycled Paper finish,10.35
+06f7db83-ff90-48d8-88db-8adcb07d8e3e,SKU-0020,Teal Keychain,Teal Keychain with Stainless Steel finish,66.26
+b4e3c82b-5a53-4c7b-9c74-1c8dc8029fcf,SKU-0021,Black Cap,Black Cap with Aluminum finish,48.12
+44b94a1c-21a3-4676-9872-237d1ff72ee1,SKU-0022,Orange Notebook,Orange Notebook with Recycled Paper finish,18.74
+6d73e45f-c878-4875-86c1-64aaec2c2f9a,SKU-0023,Yellow T-Shirt,Yellow T-Shirt with Cotton finish,23.11
+a04f1bdb-f59f-4ef5-8102-6d3ac7c3f42f,SKU-0024,Blue Poster,Blue Poster with Recycled Paper finish,97.37
+c10d84a7-7d84-4970-84b0-bc5a1d324a2b,SKU-0025,Green Hoodie,Green Hoodie with Canvas finish,38.49
+99f7fcb2-5e37-4423-830a-21f4f71c5d93,SKU-0026,White Notebook,White Notebook with Recycled Paper finish,14.62
+b3b40941-f019-4a18-892d-4320ea7e1c59,SKU-0027,Black Bottle,Black Bottle with Aluminum finish,36.24
+df7a7b16-73f8-4c24-81b0-89cce5f6e47e,SKU-0028,Red Backpack,Red Backpack with Vinyl finish,67.18
+e4f24683-8915-4d5d-9c74-6f02c5ab5ee0,SKU-0029,Blue T-Shirt,Blue T-Shirt with Cotton finish,22.07
+3b8f29d4-58cb-4a5c-90ad-9b5019c3a733,SKU-0030,Yellow Sticker,Yellow Sticker with Vinyl finish,7.31
+c4775f86-f87a-4a9b-9a5e-96d53d25532a,SKU-0031,Purple Bottle,Purple Bottle with Aluminum finish,92.85
+c0bdfecf-88a4-4744-8d27-c7f49c7fd5a8,SKU-0032,Orange Cap,Orange Cap with Recycled Paper finish,9.33
+69f9a531-7439-4a1f-8d3f-45d41832e7f6,SKU-0033,Black T-Shirt,Black T-Shirt with Cotton finish,18.92
+32aa5c9d-f31f-45e0-8642-b51ff3f20bdf,SKU-0034,Blue Mug,Blue Mug with Porcelain finish,25.40
+f6a5a1a3-9c08-44a7-a238-b55a4b0e5097,SKU-0035,Teal Sticker,Teal Sticker with Vinyl finish,6.80
+33a4f9e5-bbc7-46df-9f92-df4e8f8cc6b6,SKU-0036,Red Poster,Red Poster with Recycled Paper finish,48.22
+ad073ecf-2d61-4c84-9fb6-9dffcb82c376,SKU-0037,Yellow Notebook,Yellow Notebook with Recycled Paper finish,12.64
+6b7f9d72-3d61-4e5c-9e0a-31b2a8c6bb82,SKU-0038,Gray Cap,Gray Cap with Cotton finish,19.43
+d814fc86-d9f2-4a2f-9f6b-bcd16948f4c2,SKU-0039,Purple Backpack,Purple Backpack with Canvas finish,127.43
+4798c47c-4a48-4f21-b8e5-b4c0ad2bbf1c,SKU-0040,Orange Mug,Orange Mug with Stoneware finish,16.38
+4c70f9e0-f847-4657-b9af-b9932896f512,SKU-0041,Black Hoodie,Black Hoodie with Canvas finish,72.84
+d223c6d4-9c9c-44a5-bf06-72a8d1c8f8a9,SKU-0042,Red Cap,Red Cap with Cotton finish,9.58
+5ff0ad3e-f21d-43d2-bd1b-89ef6a7f8efb,SKU-0043,Blue Sticker,Blue Sticker with Vinyl finish,5.30
+3b2b89dc-2047-49ad-b437-3500971f0e68,SKU-0044,White Poster,White Poster with Canvas finish,33.27
+b9f8ef48-c8a2-48e3-84d4-09d16b6c8cbb,SKU-0045,Teal Hoodie,Teal Hoodie with Cotton finish,84.19
+1863a8ac-9e3a-4413-9477-9c302812ff14,SKU-0046,Gray Mug,Gray Mug with Porcelain finish,22.79
+cd544508-4ee6-42cf-beb1-5b4f14f7dd5c,SKU-0047,Yellow Cap,Yellow Cap with Aluminum finish,19.67
+8dc2e38a-64db-49b6-9464-2bb8c10e0bb5,SKU-0048,Black Bottle,Black Bottle with Stainless Steel finish,142.91
+e672e6f0-5dc1-4769-819b-3eeb5d63f452,SKU-0049,Purple T-Shirt,Purple T-Shirt with Cotton finish,24.36
+b23c9ec3-9fd6-405f-bc07-62bb0b11c65c,SKU-0050,White Keychain,White Keychain with Aluminum finish,7.48
