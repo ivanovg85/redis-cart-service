@@ -49,7 +49,7 @@
           @remove-item="handleRemove"
         >
           <template #actions>
-            <button @click="doRestore" :disabled="busy.restore">{{ busy.restore ? 'Restoring…' : 'Restore previous cart' }}</button>
+            <button @click="restoreCartHandler" :disabled="busy.restore">{{ busy.restore ? 'Restoring…' : 'Restore previous cart' }}</button>
             <button class="ghost" @click="loadCart" :disabled="busy.cart">⟳ Refresh</button>
           </template>
         </CartPanel>
