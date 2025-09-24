@@ -3,11 +3,9 @@ package org.example.rediscartservice.web.auth;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.example.rediscartservice.web.security.annotations.Authenticated;
-import org.example.rediscartservice.web.security.annotations.RotateSession;
 import org.example.rediscartservice.web.security.annotations.SessionTouch;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,24 +31,27 @@ public class AuthController {
     @Operation(summary = "Login with username/password (creates session)")
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    @RotateSession
     @SessionTouch
     public UserInfo login(@RequestBody LoginRequest req,
-                          HttpServletRequest request,
-                          HttpServletResponse response) {
+                          HttpServletRequest request) {
+
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(req.username(), req.password()));
 
-        // build and set context
-        var context = SecurityContextHolder.createEmptyContext();
+        // Ensure there is a session
+        HttpSession session = request.getSession(true);
+
+        // Rotate the session id exactly once (prevents fixation)
+        request.changeSessionId();
+
+        // Store SecurityContext in session
+        SecurityContext context = SecurityContextHolder.createEmptyContext();
         context.setAuthentication(auth);
         SecurityContextHolder.setContext(context);
-
-        // IMPORTANT: persist to session so subsequent requests are authenticated
-        securityContextRepository.saveContext(context, request, response);
-
-        // Optionally rotate the session id
-        request.changeSessionId();
+        session.setAttribute(
+                org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+                context
+        );
 
         return toUserInfo(auth);
     }
