@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.JedisPooled;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -39,8 +38,8 @@ public class SessionTouchAspect {
         var session = request.getSession(false);
         if (session == null) return;
 
-        String sid = session.getId();
-        String metaKey = "sess:" + sid + ":meta";
+        String currentSessionId = session.getId();
+        String metaKey = "sess:" + currentSessionId + ":meta";
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String user = (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken))
@@ -54,19 +53,40 @@ public class SessionTouchAspect {
         jedis.hsetnx(metaKey, "created_at", String.valueOf(now));
         jedis.hset(metaKey, Map.of("last_active", String.valueOf(now), "active", "1"));
 
-        // Ensure the session has a cart pointer
-        if (jedis.hget(metaKey, "cart_id") == null) {
-            String cartId = UUID.randomUUID().toString();
-            jedis.hset(metaKey, Map.of("cart_id", cartId));
+        // Ensure the session has a cart pointer (inherit from latest alive session if possible)
+        String currentCartId = jedis.hget(metaKey, "cart_id");
+        if (currentCartId == null) {
+            String cartIdToUse = null;
+
+            if (!"anonymous".equals(user)) {
+                // Fetch the most recent sessionId for this user
+                String latestSessionId = jedis.zrevrange("sess:user:" + user, 0, 0).stream().findFirst().orElse(null);
+
+                // If the latest is different from current and still alive, inherit its cart_id
+                if (!currentSessionId.equals(latestSessionId)) {
+                    String prevMetaKey = "sess:" + latestSessionId + ":meta";
+                    if (jedis.exists(prevMetaKey)) { // alive if meta still exists
+                        String prevCartId = jedis.hget(prevMetaKey, "cart_id");
+                        if (prevCartId != null && !prevCartId.isBlank()) {
+                            cartIdToUse = prevCartId;
+                        }
+                    }
+                }
+            }
+
+            if (cartIdToUse == null) {
+                cartIdToUse = UUID.randomUUID().toString();
+            }
+            jedis.hset(metaKey, Map.of("cart_id", cartIdToUse));
         }
 
-        // Sliding idle window
+        // Sliding idle window (keep 'active' field hot)
         String script = "return redis.call('HPEXPIRE', KEYS[1], ARGV[1], 'FIELDS', 1, 'active')";
         jedis.eval(script, 1, metaKey, String.valueOf(ttlMs));
 
         // Track user recency
         if (!"anonymous".equals(user)) {
-            jedis.zadd("sess:user:" + user, now, sid);
+            jedis.zadd("sess:user:" + user, now, currentSessionId);
         }
     }
 }
