@@ -65,7 +65,8 @@ public class SessionTouchAspect {
                 // If the latest is different from current and still alive, inherit its cart_id
                 if (!currentSessionId.equals(latestSessionId)) {
                     String prevMetaKey = "sess:" + latestSessionId + ":meta";
-                    if (jedis.exists(prevMetaKey)) { // alive if meta still exists
+                    // Alive = has "active" field (field-level TTL not expired yet)
+                    if (jedis.hexists(prevMetaKey, "active")) {
                         String prevCartId = jedis.hget(prevMetaKey, "cart_id");
                         if (prevCartId != null && !prevCartId.isBlank()) {
                             cartIdToUse = prevCartId;
